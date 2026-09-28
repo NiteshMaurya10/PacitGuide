@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI-assisted food packaging material recommendation system" />
+    <title>PacitGuide — Food Packaging Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PacitGuide home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Pacit<span class="brand-dot">Guide</span></span>
+      </a>
+      <div class="topbar-center"><span class="pulse"></span> Recommendation engine online</div>
+      <div class="topbar-actions">
+        <button class="icon-button" aria-label="View notifications">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Food packaging intelligence</p>
+          <h1>The right package,<br /><em>from farm to fork.</em></h1>
+          <p class="hero-description">Turn product properties, handling conditions, and shelf-life goals into packaging recommendations your team can use with confidence.</p>
+          <div class="hero-meta">
+            <div><strong>8</strong><span>material families</span></div>
+            <div><strong>35+</strong><span>food rules</span></div>
+            <div><strong>MAP</strong><span>ready guidance</span></div>
+          </div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-ring ring-outer"></div>
+          <div class="orbit-ring ring-middle"></div>
+          <div class="orbit-ring ring-inner"></div>
+          <div class="orbit-core"><span>SMART<br />PACK</span></div>
+          <div class="orbit-label label-one">O<sub>2</sub> barrier</div>
+          <div class="orbit-label label-two">Moisture</div>
+          <div class="orbit-label label-three">Circular</div>
+          <span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-dot dot-three"></span>
+        </div>
+      </section>
+
+      <section class="workspace container" aria-label="Packaging recommendation workspace">
+        <aside class="sidebar">
+          <div class="sidebar-title">WORKSPACE</div>
+          <nav class="side-nav" aria-label="Application navigation">
+            <a class="active" href="#recommend" data-view="recommend"><span class="nav-icon grid-icon"></span>New recommendation</a>
+            <a href="#history" data-view="history"><span class="nav-icon history-icon"></span>Recommendation history</a>
+            <a href="#materials" data-view="materials"><span class="nav-icon material-icon"></span>Material library</a>
+            <a href="#reports" data-view="reports"><span class="nav-icon report-icon"></span>Reports</a>
+          </nav>
+          <div class="sidebar-bottom">
+            <div class="sidebar-title">SETTINGS</div>
+            <a href="#method"><span class="nav-icon info-icon">i</span>How it works</a>
+            <a href="#help"><span class="nav-icon help-icon">?</span>Help &amp; guidance</a>
+          </div>
+        </aside>
+
+        <div class="workspace-content" id="app-workspace">
+          <section class="app-view is-active" id="recommend" aria-labelledby="recommend-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> New analysis</p>
+              <h2 id="recommend-heading">What are you packing?</h2>
+              <p>Enter your product and handling conditions. We’ll balance protection, shelf life, cost, and circularity.</p>
+            </div>
+            <button class="text-button" id="reset-button">Reset fields <span>↻</span></button>
+          </div>
+
+          <form id="packaging-form" novalidate>
+            <div class="form-layout">
+              <section class="input-card product-card">
+                <div class="card-label"><span class="step">01</span> PRODUCT PROFILE</div>
+                <div class="form-field full-field">
+                  <label for="commodity">Food commodity</label>
+                  <div class="select-wrap">
+                    <select id="commodity" name="commodity">
+                      <option value="tomato">Fresh tomatoes</option>
+                      <option value="leafy">Leafy vegetables</option>
+                      <option value="mango">Mangoes</option>
+                      <option value="chips">Potato chips / namkeen</option>
+                      <option value="nuts">Roasted nuts</option>
+                      <option value="coffee">Ground coffee</option>
+                      <option value="milkpowder">Milk powder</option>
+                      <option value="paneer">Paneer / fresh cheese</option>
+                      <option value="frozen">Frozen peas / vegetables</option>
+                      <option value="custom">Custom product</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="food-preview" id="food-preview">
+                  <div class="food-art tomato-art" id="food-art"><span></span><span></span><span></span></div>
+                  <div><strong id="food-type">Fresh produce</strong><p id="food-note">Respiration-sensitive · high moisture</p><p class="food-description" id="food-description">Tomatoes are living fruit after harvest, so they need controlled gas exchange to stay firm and fresh.</p></div>
+                </div>
+                <div class="mini-fields">
+                  <div class="form-field">
+                    <label for="moisture">Moisture content <output id="moisture-value">94%</output></label>
+                    <input type="range" id="moisture" min="1" max="99" value="94" />
+                  </div>
+                  <div class="form-field">
+                    <label for="fat">Oil / fat content <output id="fat-value">0.2%</output></label>
+                    <input type="range" id="fat" min="0" max="80" step="0.1" value="0.2" />
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="ph">pH level <output id="ph-value">4.3</output></label>
+                  <input type="range" id="ph" min="2" max="9" step="0.1" value="4.3" />
+                  <div class="range-hints"><span>Acidic</span><span>Neutral</span><span>Alkaline</span></div>
+                </div>
+              </section>
+
+              <section class="input-card conditions-card">
+                <div class="card-label"><span class="step">02</span> STORAGE &amp; DISTRIBUTION</div>
+                <div class="storage-grid">
+                  <div class="form-field">
+                    <label for="storage">Storage type</label>
+                    <div class="select-wrap"><select id="storage"><option value="chilled">Chilled</option><option value="ambient">Ambient</option><option value="frozen">Frozen</option></select></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="temperature">Temperature</label>
+                    <div class="unit-input"><input type="number" id="temperature" value="10" min="-30" max="50" /><span>°C</span></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="humidity">Relative humidity</label>
+                    <div class="unit-input"><input type="number" id="humidity" value="90" min="0" max="100" /><span>%</span></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="shelf-life">Target shelf life</label>
+                    <div class="unit-input"><input type="number" id="shelf-life" value="14" min="1" max="730" /><span>days</span></div>
+                  </div>
+                </div>
+                <div class="form-field full-field transport-field">
+                  <label>Transportation conditions</label>
+                  <div class="segmented" role="group" aria-label="Transportation conditions">
+                    <button type="button" data-transport="stable" class="selected"><span class="transport-icon">✦</span>Stable / local</button>
+                    <button type="button" data-transport="mixed"><span class="transport-icon">↝</span>Mixed handling</button>
+                    <button type="button" data-transport="rough"><span class="transport-icon">↯</span>Long / rough route</button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="input-card objectives-card">
+                <div class="card-label"><span class="step">03</span> PRIORITIES</div>
+                <p class="field-helper">Select what matters most for this package.</p>
+                <div class="priority-list">
+                  <label class="priority-option checked"><input type="checkbox" checked value="shelf" /><span class="check"></span><span class="priority-icon shield">⌾</span><span><strong>Maximum shelf life</strong><small>Optimise product protection</small></span></label>
+                  <label class="priority-option"><input type="checkbox" value="sustainable" /><span class="check"></span><span class="priority-icon leaf">⌁</span><span><strong>Sustainable material</strong><small>Favour recyclable or bio-based</small></span></label>
+                  <label class="priority-option"><input type="checkbox" value="cost" /><span class="check"></span><span class="priority-icon coin">₹</span><span><strong>Cost efficient</strong><small>Keep material cost in control</small></span></label>
+                </div>
+                <div class="form-field respiration-row" id="respiration-field">
+                  <label for="respiration">Respiration rate <span class="hint" title="CO₂ produced by fresh produce per kg in one hour">?</span></label>
+                  <div class="select-wrap"><select id="respiration"><option value="high">High (≥ 20 mg CO₂/kg·h)</option><option value="medium">Medium (10–20 mg CO₂/kg·h)</option><option value="low">Low (&lt; 10 mg CO₂/kg·h)</option><option value="none">Not applicable</option></select></div>
+                </div>
+              </section>
+            </div>
+            <div class="form-footer">
+              <div class="engine-note"><span class="sparkle">✦</span> Powered by food–material compatibility rules</div>
+              <button type="submit" class="analyze-button">Generate packaging recommendation <span>→</span></button>
+            </div>
+          </form>
+
+          <section class="results hidden" id="results" aria-live="polite">
+            <div class="results-header">
+              <div><p class="eyebrow"><span></span> AI recommendation</p><h2>Your packaging blueprint</h2></div>
+            </div>
+            <div class="results-hero">
+              <div class="recommendation-summary">
+                <span class="result-label">PRIMARY MATERIAL STRUCTURE</span>
+                <h3 id="structure-name">Micro-perforated BOPP / LDPE pouch</h3>
+                <p id="structure-description">A breathable pack protects fresh produce while allowing the gas exchange needed to slow respiration and retain texture.</p>
+                <div class="tag-row" id="result-tags"><span>Fresh produce</span><span>MAP compatible</span><span>Recyclable stream</span></div>
+              </div>
+            </div>
+            <div class="spec-grid">
+              <article class="spec-card accent-teal"><span>Oxygen transmission rate</span><strong id="otr-result">8,000–15,000</strong><small>cc/m²·day</small><div class="spec-bar"><i style="width:72%"></i></div><em id="otr-caption">High for produce respiration</em></article>
+              <article class="spec-card accent-sun"><span>Water vapour transmission</span><strong id="wvtr-result">8–14</strong><small>g/m²·day</small><div class="spec-bar"><i style="width:54%"></i></div><em id="wvtr-caption">Moderate moisture release</em></article>
+              <article class="spec-card accent-coral"><span>Recommended thickness</span><strong id="thickness-result">35–45</strong><small>microns</small><div class="spec-bar"><i style="width:43%"></i></div><em id="thickness-caption">Flexible, puncture-resistant</em></article>
+              <article class="spec-card accent-violet"><span>Estimated shelf life</span><strong id="life-result">12–16</strong><small>days</small><div class="spec-bar"><i style="width:62%"></i></div><em id="life-caption">At selected conditions</em></article>
+            </div>
+            <div class="results-lower">
+              <article class="detail-card recommendation-why-card">
+                <div class="detail-heading"><div><span class="detail-icon">✦</span><h4>Why this material is recommended</h4></div><span class="recommended-pill">EXPLAINED</span></div>
+                <div class="recommendation-explanation"><div><span>WHY IT FITS</span><p id="recommendation-why">Its breathable structure matches the respiration and moisture needs of fresh produce.</p></div><div><span>WHAT IT DOES</span><p id="recommendation-does">It balances gas exchange, limits condensation, and protects the produce during handling.</p></div></div>
+              </article>
+              <article class="detail-card map-card" id="map-card">
+                <div class="detail-heading"><div><span class="detail-icon">◌</span><h4>Modified atmosphere guidance</h4></div><span class="recommended-pill">RECOMMENDED</span></div>
+                <p id="map-text">Use a breathable film or controlled micro-perforations. Verify gas equilibrium with a pack trial before release.</p>
+                <div class="gas-composition" id="gas-composition"><div><span>O₂</span><strong>3–5%</strong></div><div><span>CO₂</span><strong>5–8%</strong></div><div><span>N₂</span><strong>Balance</strong></div></div>
+              </article>
+              <article class="detail-card sustainability-card">
+                <div class="detail-heading"><div><span class="detail-icon leaf-outline">⌁</span><h4>Impact &amp; circularity</h4></div><span class="impact-score"><b id="eco-score">76</b>/100</span></div>
+                <div class="impact-rows"><div><span>Recyclability</span><div class="meter"><i id="recycle-meter" style="width:76%"></i></div><b id="recycle-value">Good</b></div><div><span>Material efficiency</span><div class="meter"><i id="efficiency-meter" style="width:68%"></i></div><b id="efficiency-value">Good</b></div><div><span>Relative cost</span><div class="meter"><i id="cost-meter" style="width:45%"></i></div><b id="cost-value">Medium</b></div></div>
+              </article>
+            </div>
+            <div class="alternatives">
+              <div class="alternatives-title"><h4>Alternative material paths</h4><p>Compare trade-offs before choosing a converter-ready design.</p></div>
+              <div class="alternative-cards" id="alternative-cards"></div>
+            </div>
+            <div class="results-actions"><button class="secondary-button" id="save-button">♡ Save recommendation</button><button class="secondary-button" id="print-button">⇩ Export summary</button><button class="primary-button" id="new-analysis-button">Start new analysis <span>→</span></button></div>
+            <p class="disclaimer">Decision support only. Confirm final film construction, migration compliance, and shelf life through pack trials with your material supplier and food technologist.</p>
+          </section>
+          </section>
+
+          <section class="app-view" id="history" hidden aria-labelledby="history-heading">
+            <div class="app-page-heading">
+              <div><p class="eyebrow"><span></span> Recommendation archive</p><h2 id="history-heading">Recommendation history</h2><p>Every generated blueprint is kept in this browser so you can compare product decisions over time.</p></div>
+              <button class="secondary-button" id="clear-history-button">Clear local history</button>
+            </div>
+            <div class="insight-strip">
+              <article><span class="insight-icon">◫</span><div><strong id="history-total">0</strong><small>analyses generated</small></div></article>
+              <article><span class="insight-icon leaf-icon">⌁</span><div><strong id="history-circular">—</strong><small>average circularity</small></div></article>
+            </div>
+            <div class="content-panel history-panel">
+              <div class="panel-heading"><div><h3>Saved analyses</h3><p>Most recent recommendations are shown first.</p></div><span class="panel-kicker" id="history-count-label">0 records</span></div>
+              <div id="history-empty" class="empty-state"><span class="empty-icon">✦</span><h3>No recommendations yet</h3><p>Generate a packaging blueprint and it will appear here automatically.</p><button class="primary-button" data-view-target="recommend">Create recommendation <span>→</span></button></div>
+              <div class="history-list" id="history-list"></div>
+            </div>
+          </section>
+
+          <section class="app-view" id="materials" hidden aria-labelledby="materials-heading">
+            <div class="app-page-heading library-heading">
+              <div><p class="eyebrow"><span></span> Packaging knowledge base</p><h2 id="materials-heading">Material library</h2><p>Screening values for flexible packaging materials. Use supplier certificates for final specification and compliance.</p></div>
+              <div class="library-stat"><strong id="material-count">9</strong><span>material classes</span></div>
+            </div>
+            <div class="library-toolbar">
+              <label class="search-box" for="material-search"><span>⌕</span><input id="material-search" type="search" placeholder="Search material or property" /></label>
+              <div class="filter-pills" role="group" aria-label="Material filters"><button class="selected" data-material-filter="all">All materials</button><button data-material-filter="recyclable">Recyclable</button><button data-material-filter="sealable">Heat-sealable</button><button data-material-filter="freezer">Freezer-safe</button></div>
+            </div>
+            <div id="material-grid" class="material-grid" aria-live="polite"></div>
+            <div class="library-note"><span>i</span><p><strong>How to read this:</strong> OTR and WVTR are indicative screening values at reference thickness. Performance changes with film grade, gauge, temperature, RH, and lamination structure.</p></div>
+          </section>
+
+          <section class="app-view" id="reports" hidden aria-labelledby="reports-heading">
+            <div class="app-page-heading">
+              <div><p class="eyebrow"><span></span> Decision intelligence</p><h2 id="reports-heading">Reports</h2><p>Turn the recommendations in your archive into a quick portfolio readout for your packaging team.</p></div>
+              <div class="report-actions"><button class="secondary-button" id="download-csv-button">⇩ Download CSV</button><button class="primary-button" id="print-report-button">Print report <span>→</span></button></div>
+            </div>
+            <div class="report-hero">
+              <div class="report-hero-copy"><span>PACKAGING PORTFOLIO SNAPSHOT</span><h3 id="report-hero-title">Ready for your first analysis</h3><p id="report-hero-text">Generate recommendations to see fit-score trends, circularity signals, and product-level material decisions here.</p></div>
+              <div class="report-stamp"><b id="report-ready-count">0</b><span>tracked<br />blueprints</span></div>
+            </div>
+            <div class="report-metrics">
+              <article><span>Best fit score</span><strong id="report-best-fit">—</strong><small>highest recommendation match</small></article>
+              <article><span>Average circularity</span><strong id="report-eco">—</strong><small>across saved primary paths</small></article>
+              <article><span>Preferred strategy</span><strong id="report-strategy">—</strong><small>most selected decision path</small></article>
+            </div>
+            <div class="content-panel report-panel"><div class="panel-heading"><div><h3>Recommendation register</h3><p>A concise export-ready view of your recent packaging decisions.</p></div><span class="panel-kicker">LOCAL SESSION</span></div><div class="report-table" id="report-table"></div></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="trust-strip container" id="method">
+        <span>Designed for</span><strong>Food processors</strong><i></i><strong>Farmers &amp; FPOs</strong><i></i><strong>Startups</strong><i></i><strong>Packaging teams</strong><i></i><strong>Researchers</strong>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
